@@ -31,3 +31,6 @@ $Env:TELE_TOKEN
 
 ### run go run
 go run main.go
+
+### build app
+go build
