@@ -8,6 +8,7 @@ github.com/spf13/cobra@latest
 ## link to bot
 t.me/CobraTeleGoBot
 
+### how make
 - generate project: cobra-cli init
 
 - create tg bot: CobraTeleGoBot
