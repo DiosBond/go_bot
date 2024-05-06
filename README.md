@@ -25,7 +25,7 @@ save
 echo $TELE_TOKEN
 
 $Env:TELE_TOKEN
-
+Example save variable to ENV on win 
 [Environment]::SetEnvironmentVariable('TELE_TOKEN', $Env:TELE_TOKEN)
 [System.Environment]::SetEnvironmentVariable('ResourceGroup','AZ_Resource_Group')
 
@@ -34,3 +34,6 @@ go run main.go
 
 ### build app
 go build
+
+### run builded app
+go-bot start

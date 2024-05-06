@@ -34,7 +34,7 @@ to quickly create a Cobra application.`,
 		kbot, err := telebot.NewBot(telebot.Settings{
 			URL:    "",
 			Token:  TeleToken,
-			Poller: &telebot.LongPoller{Timeout: 15 * time.Second},
+			Poller: &telebot.LongPoller{Timeout: 10 * time.Second},
 
 			// // Updates channel capacity, defaulted to 100.
 			// Updates int
@@ -68,7 +68,7 @@ to quickly create a Cobra application.`,
 		})
 
 		if err != nil {
-			log.Fatalf("Error: /n", err)
+			log.Fatal("Error: /n", err)
 			return
 		}
 
