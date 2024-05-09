@@ -16,6 +16,7 @@
 # make (if file named Makefile)
 # make -f [myfile] (for same name file)
 
+APP := $(shell basename $(shell git remote get-url origin))
 ##### Same docker-registry for images
 REGISTRY = registry
 
@@ -53,6 +54,6 @@ push:
 	docker push ${REGISTRY}/${APP}:${VERSION}
 
 clean:
-	rm -rf kbotbot
+#rm -rf kbotbot
 	docker rmi ${REGISTRY}/${APP}:${VERSION}
 	
