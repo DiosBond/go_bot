@@ -22,8 +22,8 @@ REGISTRY = registry.gitlab.local:5000/bla-bla-bla/bla-bla
 ##### OS
 TARGETOS = windows #linux darwin windows
 
-##### Architeckture
-TARGETARCH = amd64 #amd64 arm64 
+##### Architecktureadd
+TARGETARCH = arm64 #amd64 arm64 
 
 ##### Version
 VERSION = $(shell git describe --tags --abbrev=0 --tags)-$(shell git rev-parse --short HEAD)
