@@ -47,13 +47,12 @@ build: format get
 
 image:
 #docker build . -t ${REGISTRY}/${APP}:${VERSION}-${TARGETARCH}  --build-arg TARGETARCH=${TARGETARCH}
-	docker build . -t ${REGISTRY}/${APP}:${VERSION}  --build-arg TARGETARCH=${TARGETARCH}
+	docker build . -t ${REGISTRY}/${APP}:${VERSION}-${TARGETARCH}  --build-arg TARGETARCH=${TARGETARCH}
 
 push:
 #docker push ${REGISTRY}/${APP}:${VERSION}-${TARGETARCH}
-	docker push ${REGISTRY}/${APP}:${VERSION}
+	docker push ${REGISTRY}/${APP}:${VERSION}-${TARGETARCH}
 
 clean:
 #rm -rf kbotbot
-	docker rmi ${REGISTRY}/${APP}:${VERSION}
-	
+	docker rmi ${REGISTRY}/${APP}:${VERSION}-${TARGETARCH}
