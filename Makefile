@@ -26,7 +26,7 @@ TARGETOS = windows #linux darwin windows
 TARGETARCH = arm64 #amd64 arm64 
 
 ##### Version
-VERSION = $(shell git describe --tags --abbrev=0 --tags)-$(shell git rev-parse --short HEAD)
+VERSION = v1.0.0 #$(shell git describe --tags --abbrev=0 --tags)-$(shell git rev-parse --short HEAD)
 
 format:
 	gofmt -s -w ./
@@ -42,7 +42,7 @@ get:
 
 build: format get
 #CGO_ENABLED=0 GOOS=${TARGETOS} GOARCH=${TARGETARCH} not work for windows
-	 CGO_ENABLED=0 GOOS=${TARGETOS} GOARCH=${TARGETARCH}  go build -v -o kbot -ldflags "-X="https://github.com/DiosBond/go_bot/cmd.appVersion=${VERSION}
+	 CGO_ENABLED=0 GOOS=${TARGETOS} GOARCH=${TARGETARCH}  go build -v -o kbot -ldflags "-X="https://github.com/DiosBond/go-bot/cmd.appVersion=${VERSION}
 
 image:
 	docker build . -t ${REGISTRY}/${APP}:${VERSION}-${TARGETARCH}  --build-arg TARGETARCH=${TARGETARCH}
