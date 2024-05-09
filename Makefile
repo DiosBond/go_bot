@@ -18,16 +18,16 @@
 
 APP := $(shell basename $(shell git remote get-url origin))
 ##### Same docker-registry for images
-REGISTRY = registry
+REGISTRY=registry
 
 ##### OS
-TARGETOS = windows #linux darwin windows
+TARGETOS=windows #linux darwin windows
 
 ##### Architecktureadd
-TARGETARCH = amd64 #amd64 arm64 
+TARGETARCH=amd64 #amd64 arm64 
 
 ##### Version
-VERSION = v1.0.0 #$(shell git describe --tags --abbrev=0 --tags)-$(shell git rev-parse --short HEAD)
+VERSION=v1.0.0 #$(shell git describe --tags --abbrev=0 --tags)-$(shell git rev-parse --short HEAD)
 
 format:
 	gofmt -s -w ./
