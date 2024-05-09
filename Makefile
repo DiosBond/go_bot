@@ -17,7 +17,7 @@
 # make -f [myfile] (for same name file)
 
 ##### Same docker-registry for images
-REGISTRY = registry.gitlab.local:5000/bla-bla-bla/bla-bla
+REGISTRY = registry
 
 ##### OS
 TARGETOS = windows #linux darwin windows
