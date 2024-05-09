@@ -23,7 +23,7 @@ REGISTRY = registry
 TARGETOS = windows #linux darwin windows
 
 ##### Architecktureadd
-TARGETARCH = arm64 #amd64 arm64 
+TARGETARCH = amd64 #amd64 arm64 
 
 ##### Version
 VERSION = v1.0.0 #$(shell git describe --tags --abbrev=0 --tags)-$(shell git rev-parse --short HEAD)
@@ -45,12 +45,14 @@ build: format get
 	 CGO_ENABLED=0 GOOS=${TARGETOS} GOARCH=${TARGETARCH}  go build -v -o kbot -ldflags "-X="https://github.com/DiosBond/go-bot/cmd.appVersion=${VERSION}
 
 image:
-	docker build . -t ${REGISTRY}/${APP}:${VERSION}-${TARGETARCH}  --build-arg TARGETARCH=${TARGETARCH}
+#docker build . -t ${REGISTRY}/${APP}:${VERSION}-${TARGETARCH}  --build-arg TARGETARCH=${TARGETARCH}
+	docker build . -t ${REGISTRY}/${APP}:${VERSION}  --build-arg TARGETARCH=${TARGETARCH}
 
 push:
-	docker push ${REGISTRY}/${APP}:${VERSION}-${TARGETARCH}
+#docker push ${REGISTRY}/${APP}:${VERSION}-${TARGETARCH}
+	docker push ${REGISTRY}/${APP}:${VERSION}
 
 clean:
 	rm -rf kbotbot
-	docker rmi ${REGISTRY}/${APP}:${VERSION}-${TARGETARCH}
+	docker rmi ${REGISTRY}/${APP}:${VERSION}
 	
