@@ -1,4 +1,3 @@
-Виправи помилки у розділі image у наступному тексті Makefile:
 #####	INSTALL
 # sudo apt-get install build-essential
 # make for windows	https://gnuwin32.sourceforge.net/packages/make.htm
@@ -49,11 +48,12 @@ get:
 
 build: format get
 #CGO_ENABLED=0 GOOS=${TARGETOS} GOARCH=${shell dpkg --print-crchitecture} not work for windows
-	 CGO_ENABLED=0 GOOS=${TARGETOS} GOARCH=${TARGETARCH} go build -v -o kbot -ldflags "-X="https://github.com/DiosBond/go-bot/cmd.appVersion=${VERSION}"
+	 CGO_ENABLED=0 GOOS=${TARGETOS} GOARCH=${TARGETARCH} go build -v -o kbot -ldflags "-X="https://github.com/DiosBond/go_bot/cmd.appVersion=${VERSION}"
 
 image:
 # docker build . -t ${REGISTRY}/${APP}:${VERSION}-${TARGETARCH} --build-arg TARGETARCH=${TARGETARCH}
-	docker build . -t ${REGISTRY}/${APP}:${VERSION}-${TARGETARCH} --build-arg TARGETARCH=${TARGETARCH}
+	docker build . -t ${REGISTRY}/${APP}:${VERSION}-${TARGETARCH}
+#	 --build-arg TARGETARCH=${TARGETARCH}
 
 push:
 # docker push ${REGISTRY}/${APP}:${VERSION}-${TARGETARCH}
