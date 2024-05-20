@@ -5,10 +5,12 @@
 replicaCount: 1
 
 image:
-  repository: nginx
+  repository: diosbond/go-bot
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: ""
+  tag: "v1.0.0"
+  arch: amd64
+  os: linux
 
 imagePullSecrets: []
 nameOverride: ""
@@ -28,7 +30,13 @@ podAnnotations: {}
 podSecurityContext: {}
   # fsGroup: 2000
 
-securityContext: {}
+secret:
+  name: kbot
+  key: token
+  env: TELE_TOKEN
+
+securityContext:
+  privileged: true
   # capabilities:
   #   drop:
   #   - ALL
