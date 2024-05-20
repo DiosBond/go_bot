@@ -18,10 +18,10 @@
 
 APP := $(shell basename $(shell git remote get-url origin))
 ##### Same docker-registry for images
-REGISTRY=registry
+REGISTRY := registry
 
 ##### OS
-TARGETOS=windows #linux darwin windows
+TARGETOS=linux #windows #linux darwin windows
 
 ##### Architecktureadd
 TARGETARCH=amd64 #amd64 arm64 
@@ -48,6 +48,7 @@ build: format get
 image:
 #docker build . -t ${REGISTRY}/${APP}:${VERSION}-${TARGETARCH}  --build-arg TARGETARCH=${TARGETARCH}
 	docker build . -t ${REGISTRY}/${APP}:${VERSION}-${TARGETARCH}  --build-arg TARGETARCH=${TARGETARCH}
+
 
 push:
 #docker push ${REGISTRY}/${APP}:${VERSION}-${TARGETARCH}
