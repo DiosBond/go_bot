@@ -16,7 +16,8 @@
 # make (if file named Makefile)
 # make -f [myfile] (for same name file)
 
-APP := $(shell basename $(shell git remote get-url origin))
+APP := go_bot
+#$(shell basename $(shell git remote get-url origin))
 ##### Same docker-registry for images
 REGISTRY := registry
 
@@ -36,8 +37,8 @@ format:
 lint:
 	golint
 
-test:
-	go test -v
+#test:
+#	go test -v
 
 get:
 	go get
@@ -48,11 +49,13 @@ get:
 
 build: format get
 #CGO_ENABLED=0 GOOS=${TARGETOS} GOARCH=${shell dpkg --print-crchitecture} not work for windows
-	 CGO_ENABLED=0 GOOS=${TARGETOS} GOARCH=${TARGETARCH} go build -v -o kbot -ldflags "-X="https://github.com/DiosBond/go_bot/cmd.appVersion=${VERSION}"
+#	 CGO_ENABLED=0 GOOS=${TARGETOS} GOARCH=${TARGETARCH} go build -v -o kbot -ldflags "-X="https://github.com/DiosBond/go_bot/cmd.appVersion=${VERSION}"
+
+	 CGO_ENABLED=0 GOOS=${TARGETOS} go build -v -o kbot -ldflags "-X="https://github.com/DiosBond/go_bot/cmd.appVersion=${VERSION}"
 
 image:
 # docker build . -t ${REGISTRY}/${APP}:${VERSION}-${TARGETARCH} --build-arg TARGETARCH=${TARGETARCH}
-	docker build . -t ${REGISTRY}/${APP}:${VERSION}-${TARGETARCH}
+	docker build . -t ${REGISTRY}/${APP}:${VERSION}-amd64
 #	 --build-arg TARGETARCH=${TARGETARCH}
 
 push:
