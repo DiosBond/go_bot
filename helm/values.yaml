@@ -5,7 +5,7 @@
 replicaCount: 1
 
 image:
-  repository: diosbond/go-bot
+  repository: diosbond/go_bot
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
   tag: "v1.0.0"
