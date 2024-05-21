@@ -19,7 +19,7 @@
 APP := go_bot
 #$(shell basename $(shell git remote get-url origin))
 ##### Same docker-registry for images
-REGISTRY := ghcr.io/diosdond
+REGISTRY := hub.docker.com/diosbond
 
 ##### OS
 TARGETOS=linux #windows #linux darwin windows
