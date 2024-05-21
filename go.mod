@@ -1,4 +1,4 @@
-module github.com/den-vasyliev/kbot
+module github.com/DiosBond/go_bot
 
 go 1.20
 

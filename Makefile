@@ -19,7 +19,7 @@
 APP := go_bot
 #$(shell basename $(shell git remote get-url origin))
 ##### Same docker-registry for images
-REGISTRY := registry
+REGISTRY := github.com/diosdond
 
 ##### OS
 TARGETOS=linux #windows #linux darwin windows
@@ -51,11 +51,11 @@ build: format get
 #CGO_ENABLED=0 GOOS=${TARGETOS} GOARCH=${shell dpkg --print-crchitecture} not work for windows
 #	 CGO_ENABLED=0 GOOS=${TARGETOS} GOARCH=${TARGETARCH} go build -v -o kbot -ldflags "-X="https://github.com/DiosBond/go_bot/cmd.appVersion=${VERSION}"
 
-	 CGO_ENABLED=0 GOOS=${TARGETOS} go build -v -o kbot -ldflags "-X="https://github.com/DiosBond/go_bot/cmd.appVersion=${VERSION}"
+	 CGO_ENABLED=0 GOOS=${TARGETOS} GOARCH=${TARGETARCH} go build -v -o kbot -ldflags "-X="https://github.com/DiosBond/go_bot/cmd.appVersion=${VERSION}
 
 image:
 # docker build . -t ${REGISTRY}/${APP}:${VERSION}-${TARGETARCH} --build-arg TARGETARCH=${TARGETARCH}
-	docker build . -t ${REGISTRY}/${APP}:${VERSION}-amd64
+	docker build . -t ${REGISTRY}/${APP}:${VERSION}-${TARGETARCH} --build-arg TARGETARCH=${TARGETARCH}
 #	 --build-arg TARGETARCH=${TARGETARCH}
 
 push:
