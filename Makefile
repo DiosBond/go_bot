@@ -37,8 +37,8 @@ format:
 lint:
 	golint
 
-#test:
-#	go test -v
+test:
+	go test -v
 
 get:
 	go get
